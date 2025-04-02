@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Évasion Bien-Être | Massage Professionnel & Relaxation</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f8f6;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(to right, #8e6c88, #d4b8c7);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        .logo h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 300;
+        }
+        
+        .logo p {
+            margin: 0;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #606c76;
+            padding: 1rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: opacity 0.3s;
+        }
+        
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('/api/placeholder/1100/500') no-repeat center center;
+            background-size: cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #8e6c88;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #7a5a74;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #6e5269;
+            font-weight: 400;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .service-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .service-card {
+            flex: 1 1 300px;
+            max-width: 350px;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            margin-top: 0;
+            color: #6e5269;
+            font-weight: 500;
+        }
+        
+        .service-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #8e6c88;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 4rem 0;
+            background-color: #f5f0f5;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-img {
+            flex: 1 1 400px;
+            height: 400px;
+            background: url('presentation.jpg') no-repeat center center;
+            background-size: cover;
+            border-radius: 6px;
+        }
+        
+        .about-text {
+            flex: 1 1 500px;
+        }
+        
+        .about-text h2 {
+            color: #6e5269;
+            font-weight: 400;
+            margin-top: 0;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1 1 400px;
+        }
+        
+        .contact-info h3 {
+            color: #6e5269;
+            font-weight: 500;
+        }
+        
+        .contact-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-item i {
+            font-size: 1.2rem;
+            color: #8e6c88;
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .contact-text {
+            flex: 1;
+        }
+        
+        .contact-text h4 {
+            margin: 0 0 5px 0;
+            font-weight: 500;
+        }
+        
+        .contact-text p, .contact-text a {
+            margin: 0;
+            color: #666;
+        }
+        
+        .contact-text a {
+            transition: color 0.3s;
+        }
+        
+        .contact-text a:hover {
+            color: #8e6c88;
+        }
+        
+        .social-links {
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #8e6c88;
+            color: white;
+            margin-right: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #6e5269;
+        }
+        
+        .map {
+            flex: 1 1 500px;
+            height: 400px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        /* Bouton de retour en haut */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #8e6c88;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            background-color: #6e5269;
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #6e5269;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        footer p {
+            margin: 0;
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .hero {
+                height: 300px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .about-img {
+                height: 300px;
+            }
+        }
+    </style>
+    <script>
+        // Fonction qui sera exécutée quand le document est chargé
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sélectionner tous les boutons de réservation
+            const reservationButtons = document.querySelectorAll('.btn');
+            
+            // Ajouter un écouteur d'événement à chaque bouton
+            reservationButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Empêcher le comportement par défaut du lien
+                    e.preventDefault();
+                    
+                    // Remplacer le bouton par les informations de contact
+                    this.innerHTML = '<span>📞 +33 6 12 34 56 78</span><br><span>✉️ contact@evasion-bienetre.fr</span>';
+                    this.style.backgroundColor = '#8e6c88';
+                    this.style.color = 'white';
+                    this.style.fontWeight = 'bold';
+                    this.style.textAlign = 'center';
+                    this.style.padding = '15px';
+                    this.style.borderRadius = '4px';
+                    this.style.pointerEvents = 'none'; // Désactiver les interactions avec le bouton
+                });
+            });
+            
+            // Bouton de retour en haut
+            const scrollTopBtn = document.createElement('a');
+            scrollTopBtn.className = 'scroll-top';
+            scrollTopBtn.innerHTML = '&#8963;'; // Chevron vers le haut
+            scrollTopBtn.style.transform = 'rotate(180deg)'; // Retourner le chevron pour qu'il pointe vers le haut
+            scrollTopBtn.href = '#';
+            document.body.appendChild(scrollTopBtn);
+            
+            // Afficher/masquer le bouton en fonction du défilement
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            });
+            
+            // Action du bouton
+            scrollTopBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Évasion Bien-Être</h1>
+                <p>Massage Professionnel & Relaxation</p>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Détente, Bien-être, Harmonie</h2>
+            <p>Découvrez le pouvoir transformateur du massage avec nos services personnalisés pour votre bien-être physique et mental.</p>
+            <a href="#contact" class="btn">Réserver Maintenant</a>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Services</h2>
+                <p>Nous proposons une variété de massages thérapeutiques adaptés à vos besoins spécifiques pour une relaxation optimale.</p>
+            </div>
+            
+            <div class="service-list">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="service-content">
+                        <h3>Massage Suédois</h3>
+                        <p>Un massage dynamique qui travaille en profondeur sur les tensions musculaires pour une relaxation complète.</p>
+                        <span class="price">65€ / 60 minutes</span>
+                        <span class="price">95€ / 90 minutes</span>
+                        <a href="#contact" class="btn">Réserver</a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="service-content">
+                        <h3>Massage Californien</h3>
+                        <p>Un massage doux et enveloppant qui favorise la relaxation et l'évacuation du stress quotidien.</p>
+                        <span class="price">70€ / 60 minutes</span>
+                        <span class="price">100€ / 90 minutes</span>
+                        <a href="#contact" class="btn">Réserver</a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="service-content">
+                        <h3>Massage Thaïlandais</h3>
+                        <p>Un massage énergétique traditionnel qui combine pressions et étirements pour libérer les tensions.</p>
+                        <span class="price">75€ / 60 minutes</span>
+                        <span class="price">110€ / 90 minutes</span>
+                        <a href="#contact" class="btn">Réserver</a>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="service-content">
+                        <h3>Massage aux Pierres Chaudes</h3>
+                        <p>Des pierres lisses et chauffées sont placées sur des points spécifiques pour aider à détendre les muscles tendus.</p>
+                        <span class="price">85€ / 75 minutes</span>
+                        <a href="#contact" class="btn">Réserver</a>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="service-content">
+                        <h3>Réflexologie Plantaire</h3>
+                        <p>Application de pressions sur des points spécifiques des pieds correspondant à différentes parties du corps.</p>
+                        <span class="price">55€ / 45 minutes</span>
+                        <a href="#contact" class="btn">Réserver</a>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="service-content">
+                        <h3>Massage Spécial Dos</h3>
+                        <p>Un massage ciblé pour soulager les tensions dorsales, idéal pour les personnes travaillant longtemps assises.</p>
+                        <span class="price">60€ / 45 minutes</span>
+                        <span class="price">80€ / 60 minutes</span>
+                        <a href="#contact" class="btn">Réserver</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-img"></div>
+                <div class="about-text">
+                    <h2>À Propos d'Évasion Bien-Être</h2>
+                    <p>Bienvenue chez Évasion Bien-Être, votre havre de paix dédié au bien-être et à la relaxation. Avec plus de 8 ans d'expérience dans l'art du massage, nous vous offrons un service personnalisé dans un cadre apaisant.</p>
+                    <p>Notre philosophie est centrée sur l'équilibre entre le corps et l'esprit. Chaque massage est adapté à vos besoins spécifiques, que vous cherchiez à soulager des douleurs musculaires, à diminuer votre niveau de stress ou simplement à vous accorder un moment de détente.</p>
+                    <p>Nous utilisons exclusivement des huiles biologiques et des techniques éprouvées pour vous garantir une expérience optimale. Notre espace a été conçu pour créer une atmosphère de tranquillité dès votre arrivée.</p>
+                    <p>Chez Évasion Bien-Être, nous ne nous contentons pas de traiter les symptômes, nous cherchons à favoriser votre bien-être global pour des effets durables sur votre santé physique et mentale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contactez-Nous</h2>
+                <p>Prêt à vivre une expérience de massage exceptionnelle ? Contactez-nous pour prendre rendez-vous ou pour toute information.</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <div class="contact-text">
+                            <h4>Adresse</h4>
+                            <p>Chemin Pellangari, 13600 CEYRESTE</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i>📞</i>
+                        <div class="contact-text">
+                            <h4>Téléphone</h4>
+                            <p>+33 6 12 34 56 78</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i>✉️</i>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>contact@evasion-bienetre.fr</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i>🕒</i>
+                        <div class="contact-text">
+                            <h4>Horaires</h4>
+                            <p>Lundi - Vendredi: 10h00 - 20h00</p>
+                            <p>Samedi: 10h00 - 18h00</p>
+                            <p>Dimanche: Fermé</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <h4>Suivez-Nous</h4>
+                        <a href="https://www.instagram.com/evasion_bienetre" target="_blank">📸</a>
+                        <a href="https://facebook.com/evasionbienetre" target="_blank">📘</a>
+                    </div>
+                </div>
+                
+                <div class="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.0453913267534!2d5.6916839761503835!3d43.20879887112802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9a59c436bfdc1%3A0x7fb38421a87e9c96!2sChemin%20Pellangari%2C%2013600%20Ceyreste!5e0!3m2!1sfr!2sfr!4v1712084536868!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Évasion Bien-Être. Tous Droits Réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>
